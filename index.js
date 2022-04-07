@@ -1,7 +1,7 @@
 const fs = require('fs');
 const express = require('express')
 const PORT = 8080
-const { Server : IOServer } = require('socket.io')
+const {Server : IOServer } = require('socket.io')
 const {Server: HTTPServer} = require('http')
 
 const app = express()
@@ -13,6 +13,10 @@ app.use('/api/productos', productsRouter)
 app.use('/api/carrito', cartRouter)
 
 app.use(express.static('public'))
+
+// motor de plantillas 
+app.set('view engine', 'ejs')
+
 
 httpServer.listen(PORT, () => console.log  ('servidor corriendo en el puerto 8080'))
 
